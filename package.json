@@ -1,7 +1,7 @@
 {
   "name": "hubot-oyatsu",
   "description": "A hubot script that check oyatsu",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Yoshifumi Sato <sato_yos@nifty.com>",
   "license": "MIT",
 

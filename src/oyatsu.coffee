@@ -16,4 +16,4 @@
 
 module.exports = (robot) ->
   robot.respond /飲んだ/, (msg) ->
-    msg.send "なるほど、また氷コーヒーですね。早ければ来週から記録しちゃいますよ？"
+    msg.send "なるほど、また氷コーヒーですか。早ければ来週から記録しちゃいますよ？"
