@@ -17,6 +17,7 @@
 moment = require 'moment'
   
 module.exports = (robot) ->
+  moment.locale('ja')
   key = 'ice-coffee-logs'
   
   robot.respond /飲ん|飲み/, (msg) ->
