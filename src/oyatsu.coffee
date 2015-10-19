@@ -14,6 +14,27 @@
 # Author:
 #   Yoshifumi Sato <sato_yos@nifty.com>
 
+moment = require 'moment'
+  
 module.exports = (robot) ->
-  robot.respond /飲んだ/, (msg) ->
-    msg.send "なるほど、また氷コーヒーですか。早ければ来週から記録しちゃいますよ？"
+  key = 'ice-coffee-logs'
+  
+  robot.respond /飲ん|飲み/, (msg) ->
+    logs = robot.brain.get(key) ? []
+    logs.push moment()
+    robot.brain.set(key, logs)
+    today_beginning = moment().hour(0).minute(0).seconds(0)
+    today_logs = logs.filter (m) ->
+      m.isAfter(today_beginning)
+    msg.send "なるほど、氷コーヒーですね。私の記憶が確かならば、今日#{today_logs.length}杯目ですが、合ってます？"
+
+  robot.respond /coffee reset/, (msg) ->
+    robot.brain.set(key, [])
+    msg.send "氷コーヒーのログをリセットしました。"
+    
+  robot.respond /coffee list/, (msg) ->
+    logs = robot.brain.get(key) ? []
+    message = logs.map (l) ->
+      "#{l.format('YYYY-MM-DD HH:mm')} に飲んだ。"
+    .join '\n'
+    msg.send message
