@@ -15,13 +15,17 @@
 #   Yoshifumi Sato <sato_yos@nifty.com>
 
 moment = require 'moment'
+
+config =
+  path: './brain.json'
   
 module.exports = (robot) ->
   moment.locale('ja')
   key = 'ice-coffee-logs'
   
   robot.respond /飲ん|飲み/, (msg) ->
-    logs = robot.brain.get(key) ? []
+    org_logs = robot.brain.get(key) ? []
+    logs = org_logs.map (ol) ->  moment(ol)
     logs.push moment()
     robot.brain.set(key, logs)
     today_beginning = moment().hour(0).minute(0).seconds(0)
@@ -34,7 +38,8 @@ module.exports = (robot) ->
     msg.send "氷コーヒーのログをリセットしました。"
     
   robot.respond /coffee list/, (msg) ->
-    logs = robot.brain.get(key) ? []
+    org_logs = robot.brain.get(key) ? []
+    logs = org_logs.map (ol) ->  moment(ol)
     message = logs.map (l) ->
       "#{l.format('YYYY-MM-DD HH:mm')} に飲んだ。"
     .join '\n'
