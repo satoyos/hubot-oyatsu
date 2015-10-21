@@ -1,7 +1,7 @@
 {
   "name": "hubot-oyatsu",
   "description": "A hubot script that check oyatsu",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "Yoshifumi Sato <sato_yos@nifty.com>",
   "license": "MIT",
   "keywords": "hubot, hubot-scripts",
@@ -13,6 +13,7 @@
     "url": "https://github.com/hubot-scripts/hubot-oyatsu/issues"
   },
   "dependencies": {
+    "hubot-s3-brain": "0.0.1",
     "moment": "^2.10.6"
   },
   "peerDependencies": {
