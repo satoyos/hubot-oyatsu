@@ -16,9 +16,6 @@
 
 moment = require 'moment'
 
-config =
-  path: './brain.json'
-  
 module.exports = (robot) ->
   moment.locale('ja')
   key = 'ice-coffee-logs'
@@ -28,6 +25,7 @@ module.exports = (robot) ->
     logs = org_logs.map (ol) ->  moment(ol)
     logs.push moment()
     robot.brain.set(key, logs)
+    robot.brain.save()
     today_beginning = moment().hour(0).minute(0).seconds(0)
     today_logs = logs.filter (m) ->
       m.isAfter(today_beginning)

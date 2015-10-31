@@ -13,6 +13,7 @@
     "url": "https://github.com/hubot-scripts/hubot-oyatsu/issues"
   },
   "dependencies": {
+    "hubot-redis-brain": "0.0.3",
     "moment": "^2.10.6"
   },
   "peerDependencies": {
