@@ -29,7 +29,7 @@ module.exports = (robot) ->
     today_beginning = moment().hour(0).minute(0).seconds(0)
     today_logs = logs.filter (m) ->
       m.isAfter(today_beginning)
-    msg.send "なるほど、氷コーヒーですね。私の記憶が確かならば、今日#{today_logs.length}杯目ですが、合ってます？"
+    msg.send "なるほど、氷コーヒーですね。私の記憶が確かならば、今日#{today_logs.length}杯目で、通算では#{logs.length}杯目です。"
 
   robot.respond /coffee reset/, (msg) ->
     robot.brain.set(key, [])
@@ -42,3 +42,17 @@ module.exports = (robot) ->
       "#{l.format('YYYY-MM-DD HH:mm')} に飲んだ。"
     .join '\n'
     msg.send message
+
+  robot.respond /coffee delete/, (msg) ->
+    org_logs = robot.brain.get(key) ? []
+    logs = org_logs.map (ol) ->  moment(ol)
+    removed_record = logs.pop()
+    robot.brain.set(key, logs)
+    robot.brain.save()
+    msg.send "最後の記録(#{removed_record.format('YYYY-MM-DD HH:mm')})を削除しました。"
+
+  robot.respond /coffee count/, (msg) ->
+    org_logs = robot.brain.get(key) ? []
+    logs = org_logs.map (ol) ->  moment(ol)
+    msg.send "これまでに飲んだ氷珈琲の杯数: #{logs.length}"    
+    
