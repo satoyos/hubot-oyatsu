@@ -24,7 +24,7 @@ module.exports = (robot) ->
     robot.brain.set(key, logs)
     robot.brain.save()
     week_beginning = moment().startOf('week')
-    msg.send "今週の始まりは、#{week_beginning.format('YYYY-MM-DD HH:mm')}"
+    # msg.send "今週の始まりは、#{week_beginning.format('YYYY-MM-DD HH:mm')}" #
     week_logs = logs.filter (m) ->
       m.isAfter(week_beginning)
     msg.send "ドライフルーツを開けましたね。今週は#{week_logs.length}袋目で、通算では#{logs.length}袋目です。"
