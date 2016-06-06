@@ -28,6 +28,7 @@ module.exports = (robot) ->
     week_logs = logs.filter (m) ->
       m.isAfter(week_beginning)
     msg.send "ドライフルーツを開けましたね。今週(#{week_beginning.format('MM/DD')}の週)は#{week_logs.length}袋目で、通算では#{logs.length}袋目です。"
+    msg.send "（ちなみに、 #{logs[0].format('YYYY/MM/DD')} からカウントし始めています。）"
 
   robot.respond /df reset/, (msg) ->
     robot.brain.set(key, [])
