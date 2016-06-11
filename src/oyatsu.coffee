@@ -30,6 +30,7 @@ module.exports = (robot) ->
     today_logs = logs.filter (m) ->
       m.isAfter(today_beginning)
     msg.send "なるほど、氷コーヒーですね。私の記憶が確かならば、今日#{today_logs.length}杯目で、通算では#{logs.length}杯目です。"
+    msg.send "（ちなみに、 #{logs[0].format('YYYY/MM/DD')} からカウントし始めています。）"
 
   robot.respond /coffee reset/, (msg) ->
     robot.brain.set(key, [])
