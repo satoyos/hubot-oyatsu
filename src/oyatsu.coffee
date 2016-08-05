@@ -5,8 +5,10 @@
 #   LIST_OF_ENV_VARS_TO_SET
 #
 # Commands:
-#   hubot hello - <what the respond trigger does>
-#   orly - <what the hear trigger does>
+#   hubot 飲んだ|飲みました - <tell Hubot that you had a cup of ice coffee>
+#   hubot coffee list - <list up all logs of ice coffee>
+#   hubot coffee count - <return how many cups of ice coffee you drunk>
+#   hubot coffee delete - <delete last log of drinking ice coffee>
 #
 # Notes:
 #   <optional notes required for the script>
