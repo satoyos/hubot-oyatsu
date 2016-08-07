@@ -2,8 +2,10 @@
 #   A hubot script that check opening Dry Fruits packeage
 #
 # Commands:
-#   hubot hello - <what the respond trigger does>
-#   orly - <what the hear trigger does>
+#   hubot 開け*|開封* - tell Hubot that you opened a dry fruit package
+#   hubot df list   - list up all logs of opening dry fruit package
+#   hubot df count  - return how many packages of dry fruit you opened
+#   hubot df delete - delete last log of opening dry fruit package
 #
 # Notes:
 #   <optional notes required for the script>
